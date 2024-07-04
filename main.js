@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const { log } = require('console')
-const fetch_numbers = require('./api_calls')
+const api_calls = require('./api_calls')
 
 const app = express()
 app.use(bodyParser.json())
@@ -14,8 +14,10 @@ app.get('/numbers/:id', async(req, res)=>{
         case "p":
             // log("primes");
             val = "primes"
-            numbers = await fetch_numbers(val)
+            numbers = await api_calls.fetch_numbers(val)
             log(numbers["numbers"]);
+            avg = await api_calls.getAvg()
+            log(avg)
             break;
         case "e":
             val = "even"

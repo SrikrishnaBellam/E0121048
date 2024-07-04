@@ -1,8 +1,9 @@
 const { log } = require("console");
+const { get } = require("http");
 
 const fetch_numbers = async (id) => {
     const token_type = "Bearer";
-    const Auth_key ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzIwMDgzMzMxLCJpYXQiOjE3MjAwODMwMzEsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjFkZGY2ZmQ3LTcwYzItNDkxMS05Mzk4LWU0YWZjYmMzYzk0OCIsInN1YiI6ImJlbGxhbXNyaWtyaXNobmFAZ21haWwuY29tIn0sImNvbXBhbnlOYW1lIjoiU3JpIFJhbWFjaGFuZHJhIEVuZ2luZWVyaW5nIEFuZCBUZWNobm9sb2d5IiwiY2xpZW50SUQiOiIxZGRmNmZkNy03MGMyLTQ5MTEtOTM5OC1lNGFmY2JjM2M5NDgiLCJjbGllbnRTZWNyZXQiOiJNeXdmWnZzTkdWS25qSm1GIiwib3duZXJOYW1lIjoiU3JpIEtyaXNobmEgQmVsbGFtIiwib3duZXJFbWFpbCI6ImJlbGxhbXNyaWtyaXNobmFAZ21haWwuY29tIiwicm9sbE5vIjoiRTAxMjEwNDgifQ.416oPdcOiaCOxyZqk_6iOJlgxdRHU66_Y4_VhFmIQG4"
+    const Auth_key ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzIwMDg1NTc0LCJpYXQiOjE3MjAwODUyNzQsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjFkZGY2ZmQ3LTcwYzItNDkxMS05Mzk4LWU0YWZjYmMzYzk0OCIsInN1YiI6ImJlbGxhbXNyaWtyaXNobmFAZ21haWwuY29tIn0sImNvbXBhbnlOYW1lIjoiU3JpIFJhbWFjaGFuZHJhIEVuZ2luZWVyaW5nIEFuZCBUZWNobm9sb2d5IiwiY2xpZW50SUQiOiIxZGRmNmZkNy03MGMyLTQ5MTEtOTM5OC1lNGFmY2JjM2M5NDgiLCJjbGllbnRTZWNyZXQiOiJNeXdmWnZzTkdWS25qSm1GIiwib3duZXJOYW1lIjoiU3JpIEtyaXNobmEgQmVsbGFtIiwib3duZXJFbWFpbCI6ImJlbGxhbXNyaWtyaXNobmFAZ21haWwuY29tIiwicm9sbE5vIjoiRTAxMjEwNDgifQ.zcccWWHcmGcho9r2ao851Cxrzzg28YcnVZ9Pq4UbDVM"
 
     try{
         const response = await fetch(`http://20.244.56.144/test/${id}`,{
@@ -22,6 +23,14 @@ const fetch_numbers = async (id) => {
     }
 }
 
+const getAvg = async (numbers) =>{
+    numbers = checkLength(numbers)
+    let sm = 0
+    for (let i = 0; i < numbers.length; i++) {
+        sm += numbers[i]
+    }
+    let avg = sm/avg.length
+}
 
 const reverseList = async (numbers) => {
     let l = 0;
@@ -68,4 +77,4 @@ const checkLength = async (numbers) => {
     
 // }
 
-module.exports = fetch_numbers;
+module.exports = {fetch_numbers, getAvg};
